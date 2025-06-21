@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Complete Viva Preparation Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .command-box {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 8px 0;
+        }
+        .qa-box {
+            border-left: 4px solid #3b82f6;
+            padding-left: 16px;
+            margin: 12px 0;
+        }
+        .important {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="max-w-6xl mx-auto p-6">
+        
+        <!-- Header -->
+        <div class="text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg">
+            <h1 class="text-4xl font-bold mb-4"><i class="fab fa-docker"></i> Docker Complete Viva Guide</h1>
+            <p class="text-xl">Everything you need for your Docker viva exam!</p>
+        </div>
+
+        <!-- Quick Reference Card -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-center mb-4 text-blue-600">🚀 Quick Command Reference</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="font-bold mb-2">Essential Commands:</h3>
+                    <div class="command-box">docker --version</div>
+                    <div class="command-box">docker images</div>
+                    <div class="command-box">docker ps</div>
+                    <div class="command-box">docker pull ubuntu</div>
+                    <div class="command-box">docker run -it ubuntu</div>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Container Management:</h3>
+                    <div class="command-box">docker stop container_id</div>
+                    <div class="command-box">docker rm container_id</div>
+                    <div class="command-box">docker rmi image_name</div>
+                    <div class="command-box">docker logs container_id</div>
+                    <div class="command-box">docker exec -it container_id bash</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unit I -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-play-circle"></i> UNIT I: Introduction to Docker</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🐳 What is Docker?</h3>
+            <div class="important">
+                <strong>Docker</strong> is a containerization platform that packages applications and their dependencies into lightweight, portable containers.
+            </div>
+            
+            <h4 class="text-xl font-bold mt-6 mb-3">Docker Architecture:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Docker Client:</strong> CLI interface to interact with Docker</li>
+                <li><strong>Docker Daemon:</strong> Background service managing containers</li>
+                <li><strong>Docker Registry:</strong> Storage for Docker images (Docker Hub)</li>
+                <li><strong>Docker Objects:</strong> Images, Containers, Networks, Volumes</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Docker Lifecycle:</h4>
+            <div class="bg-gray-100 p-4 rounded">
+                1. <strong>Build</strong> → 2. <strong>Ship</strong> → 3. <strong>Run</strong>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Hyper-V Concept:</h4>
+            <p class="bg-yellow-100 p-3 rounded">
+                <strong>Hyper-V</strong> is Microsoft's virtualization technology. Docker on Windows uses Hyper-V for container isolation.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">💻 Installation & Basic Commands</h3>
+            
+            <h4 class="text-xl font-bold mb-3">Installation Steps:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h5 class="font-bold">Windows:</h5>
+                    <ol class="list-decimal pl-6">
+                        <li>Download Docker Desktop</li>
+                        <li>Enable Hyper-V</li>
+                        <li>Install and restart</li>
+                    </ol>
+                </div>
+                <div>
+                    <h5 class="font-bold">Linux (Ubuntu):</h5>
+                    <div class="command-box">sudo apt update</div>
+                    <div class="command-box">sudo apt install docker.io</div>
+                    <div class="command-box">sudo systemctl start docker</div>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Basic Docker Commands:</h4>
+            <div class="grid grid-cols-1 gap-2">
+                <div class="command-box">docker --version # Check Docker version</div>
+                <div class="command-box">docker info # System information</div>
+                <div class="command-box">docker images # List all images</div>
+                <div class="command-box">docker ps # List running containers</div>
+                <div class="command-box">docker ps -a # List all containers</div>
+                <div class="command-box">docker pull nginx # Download image</div>
+                <div class="command-box">docker run nginx # Run container</div>
+                <div class="command-box">docker run -d nginx # Run in background</div>
+                <div class="command-box">docker run -p 8080:80 nginx # Port mapping</div>
+                <div class="command-box">docker stop container_id # Stop container</div>
+                <div class="command-box">docker rm container_id # Remove container</div>
+                <div class="command-box">docker rmi image_name # Remove image</div>
+            </div>
+        </div>
+
+        <!-- Viva Questions Unit I -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit I</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What is Docker and why is it used?</p>
+                <p><strong>Answer:</strong> Docker is a containerization platform that packages applications with dependencies into portable containers. It's used for consistent deployment across environments, scalability, and resource efficiency.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: Explain Docker Architecture.</p>
+                <p><strong>Answer:</strong> Docker has 4 main components: Docker Client (CLI), Docker Daemon (background service), Docker Registry (image storage), and Docker Objects (images, containers, networks, volumes).</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: What is the difference between Docker Image and Container?</p>
+                <p><strong>Answer:</strong> Image is a read-only template used to create containers. Container is a running instance of an image with its own file system and processes.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: What is Hyper-V and its role in Docker?</p>
+                <p><strong>Answer:</strong> Hyper-V is Microsoft's virtualization technology. Docker on Windows uses Hyper-V for container isolation and virtualization.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: How to check if Docker is running?</p>
+                <p><strong>Answer:</strong> Use commands: docker --version, docker info, or docker ps</p>
+            </div>
+        </div>
+
+        <!-- Unit II -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-cogs"></i> UNIT II: Basic Docker Operations</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🌐 Docker Hub Operations</h3>
+            
+            <h4 class="text-xl font-bold mb-3">Creating Docker Hub Account:</h4>
+            <ol class="list-decimal pl-6 space-y-2">
+                <li>Go to hub.docker.com</li>
+                <li>Sign up with email</li>
+                <li>Verify email</li>
+                <li>Login from terminal: <code class="bg-gray-200 px-2 py-1 rounded">docker login</code></li>
+            </ol>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Pushing to Docker Hub:</h4>
+            <div class="command-box">docker tag local-image username/repository:tag</div>
+            <div class="command-box">docker push username/repository:tag</div>
+            <div class="command-box">docker pull username/repository:tag</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Saving Changes to Container:</h4>
+            <div class="command-box">docker commit container_id new_image_name</div>
+            <div class="command-box">docker save -o image.tar image_name</div>
+            <div class="command-box">docker load -i image.tar</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">📄 Dockerfile</h3>
+            
+            <div class="important">
+                <strong>Dockerfile</strong> is a text file with instructions to build Docker images automatically.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Basic Dockerfile Structure:</h4>
+            <div class="command-box">
+FROM ubuntu:20.04
+MAINTAINER your-name
+RUN apt-get update
+RUN apt-get install -y nginx
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Dockerfile Instructions:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>FROM:</strong> Base image</li>
+                <li><strong>RUN:</strong> Execute commands</li>
+                <li><strong>COPY:</strong> Copy files</li>
+                <li><strong>ADD:</strong> Copy + extract</li>
+                <li><strong>EXPOSE:</strong> Declare ports</li>
+                <li><strong>CMD:</strong> Default command</li>
+                <li><strong>ENTRYPOINT:</strong> Fixed command</li>
+                <li><strong>ENV:</strong> Environment variables</li>
+                <li><strong>WORKDIR:</strong> Working directory</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Building from Dockerfile:</h4>
+            <div class="command-box">docker build -t image_name .</div>
+            <div class="command-box">docker build -t image_name:tag .</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-purple-600">💾 Docker Storage</h3>
+            
+            <h4 class="text-xl font-bold mb-3">Types of Docker Storage:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded">
+                    <h5 class="font-bold">1. Volumes</h5>
+                    <p>Managed by Docker</p>
+                    <div class="command-box text-sm">docker volume create vol1</div>
+                </div>
+                <div class="bg-green-50 p-4 rounded">
+                    <h5 class="font-bold">2. Bind Mounts</h5>
+                    <p>Host directory mapping</p>
+                    <div class="command-box text-sm">-v /host:/container</div>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded">
+                    <h5 class="font-bold">3. tmpfs Mounts</h5>
+                    <p>Temporary file system</p>
+                    <div class="command-box text-sm">--tmpfs /tmp</div>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Volume Commands:</h4>
+            <div class="command-box">docker volume create my_volume</div>
+            <div class="command-box">docker volume ls</div>
+            <div class="command-box">docker run -v my_volume:/data nginx</div>
+            <div class="command-box">docker volume rm my_volume</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Linking Containers:</h4>
+            <div class="command-box">docker run --name db mysql</div>
+            <div class="command-box">docker run --link db:database webapp</div>
+        </div>
+
+        <!-- Viva Questions Unit II -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit II</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What is Docker Hub?</p>
+                <p><strong>Answer:</strong> Docker Hub is a cloud-based registry service for sharing Docker images. It's the default registry for Docker.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: How to push an image to Docker Hub?</p>
+                <p><strong>Answer:</strong> 1) docker login 2) docker tag image username/repo:tag 3) docker push username/repo:tag</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: What is Dockerfile and its purpose?</p>
+                <p><strong>Answer:</strong> Dockerfile is a text file containing instructions to build Docker images automatically. It defines the environment and dependencies.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: Difference between CMD and ENTRYPOINT?</p>
+                <p><strong>Answer:</strong> CMD provides default commands that can be overridden. ENTRYPOINT sets fixed commands that cannot be overridden.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: What are Docker volumes?</p>
+                <p><strong>Answer:</strong> Docker volumes are persistent storage mechanisms managed by Docker, independent of container lifecycle.</p>
+            </div>
+        </div>
+
+        <!-- Unit III -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-cubes"></i> UNIT III: Microservices & Docker Compose</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🔧 Microservices</h3>
+            
+            <div class="important">
+                <strong>Microservices</strong> is an architectural approach where applications are built as a collection of small, independent services.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Microservices Benefits:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Independent deployment</li>
+                <li>Technology diversity</li>
+                <li>Fault isolation</li>
+                <li>Scalability</li>
+                <li>Team autonomy</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Microservices vs Monolithic:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-green-50 p-4 rounded">
+                    <h5 class="font-bold">Microservices</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>Multiple small services</li>
+                        <li>Independent deployment</li>
+                        <li>Distributed system</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 p-4 rounded">
+                    <h5 class="font-bold">Monolithic</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>Single large application</li>
+                        <li>Single deployment unit</li>
+                        <li>Centralized system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">🐙 Docker Compose</h3>
+            
+            <div class="important">
+                <strong>Docker Compose</strong> is a tool for defining and running multi-container Docker applications using YAML files.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Installation:</h4>
+            <div class="command-box">sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</div>
+            <div class="command-box">sudo chmod +x /usr/local/bin/docker-compose</div>
+            <div class="command-box">docker-compose --version</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">YAML File Basics:</h4>
+            <div class="important">
+                YAML (YAML Ain't Markup Language) uses indentation and key-value pairs. No tabs, only spaces!
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Sample docker-compose.yml:</h4>
+            <div class="command-box">
+version: '3.8'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">WordPress with Docker Compose:</h4>
+            <div class="command-box">
+version: '3.8'
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Docker Compose Commands:</h4>
+            <div class="command-box">docker-compose up # Start services</div>
+            <div class="command-box">docker-compose up -d # Start in background</div>
+            <div class="command-box">docker-compose down # Stop services</div>
+            <div class="command-box">docker-compose ps # List services</div>
+            <div class="command-box">docker-compose logs # View logs</div>
+            <div class="command-box">docker-compose build # Build images</div>
+        </div>
+
+        <!-- Viva Questions Unit III -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit III</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What are Microservices?</p>
+                <p><strong>Answer:</strong> Microservices is an architectural pattern where applications are built as collection of small, independent services communicating via APIs.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: What is Docker Compose?</p>
+                <p><strong>Answer:</strong> Docker Compose is a tool for defining and running multi-container Docker applications using YAML configuration files.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: What is YAML?</p>
+                <p><strong>Answer:</strong> YAML (YAML Ain't Markup Language) is a human-readable data serialization standard using indentation and key-value pairs.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: Benefits of Docker Compose?</p>
+                <p><strong>Answer:</strong> Single file configuration, easy multi-container management, environment isolation, and simplified deployment.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: How to start services with Docker Compose?</p>
+                <p><strong>Answer:</strong> Use 'docker-compose up' to start services defined in docker-compose.yml file.</p>
+            </div>
+        </div>
+
+        <!-- Unit IV -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-cluster"></i> UNIT IV: Container Orchestration & Docker Swarm</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🎭 Container Orchestration</h3>
+            
+            <div class="important">
+                <strong>Container Orchestration</strong> is the automated management of containerized applications including deployment, scaling, networking, and availability.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Why Orchestration?</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Automatic deployment</li>
+                <li>Service discovery</li>
+                <li>Load balancing</li>
+                <li>Auto-scaling</li>
+                <li>Health monitoring</li>
+                <li>Rolling updates</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Popular Orchestration Tools:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-blue-50 p-4 rounded text-center">
+                    <h5 class="font-bold">Docker Swarm</h5>
+                    <p class="text-sm">Native Docker clustering</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded text-center">
+                    <h5 class="font-bold">Kubernetes</h5>
+                    <p class="text-sm">Google's orchestration</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded text-center">
+                    <h5 class="font-bold">Apache Mesos</h5>
+                    <p class="text-sm">Distributed systems kernel</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">🐝 Docker Swarm</h3>
+            
+            <div class="important">
+                <strong>Docker Swarm</strong> is Docker's native clustering and orchestration solution for managing multiple Docker hosts.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Swarm Concepts:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Node:</strong> Docker engine in swarm</li>
+                <li><strong>Manager Node:</strong> Controls swarm</li>
+                <li><strong>Worker Node:</strong> Runs tasks</li>
+                <li><strong>Service:</strong> Definition of tasks</li>
+                <li><strong>Task:</strong> Running container</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Creating Docker Swarm:</h4>
+            <div class="command-box">docker swarm init # Initialize swarm</div>
+            <div class="command-box">docker swarm init --advertise-addr IP_ADDRESS</div>
+            <div class="command-box">docker swarm join-token worker # Get join token</div>
+            <div class="command-box">docker swarm join-token manager</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Joining Swarm:</h4>
+            <div class="command-box">docker swarm join --token TOKEN MANAGER_IP:2377</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Managing Nodes:</h4>
+            <div class="command-box">docker node ls # List nodes</div>
+            <div class="command-box">docker node inspect NODE_ID</div>
+            <div class="command-box">docker node rm NODE_ID</div>
+            <div class="command-box">docker node promote NODE_ID # Make manager</div>
+            <div class="command-box">docker node demote NODE_ID # Make worker</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Creating Services:</h4>
+            <div class="command-box">docker service create --name web nginx</div>
+            <div class="command-box">docker service create --name web --replicas 3 nginx</div>
+            <div class="command-box">docker service create --name web -p 8080:80 nginx</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Managing Services:</h4>
+            <div class="command-box">docker service ls # List services</div>
+            <div class="command-box">docker service ps SERVICE_NAME # Service tasks</div>
+            <div class="command-box">docker service scale SERVICE_NAME=5 # Scale service</div>
+            <div class="command-box">docker service update SERVICE_NAME # Update service</div>
+            <div class="command-box">docker service rm SERVICE_NAME # Remove service</div>
+        </div>
+
+        <!-- Viva Questions Unit IV -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit IV</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What is Container Orchestration?</p>
+                <p><strong>Answer:</strong> Container orchestration is automated management of containerized applications including deployment, scaling, networking, and health monitoring.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: What is Docker Swarm?</p>
+                <p><strong>Answer:</strong> Docker Swarm is Docker's native clustering and orchestration tool for managing multiple Docker hosts as a single virtual system.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: Difference between Manager and Worker nodes?</p>
+                <p><strong>Answer:</strong> Manager nodes control the swarm, make scheduling decisions, and serve swarm API. Worker nodes run tasks assigned by managers.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: How to initialize Docker Swarm?</p>
+                <p><strong>Answer:</strong> Use 'docker swarm init' command. It creates a single-node swarm and makes current node a manager.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: What is a Docker Service?</p>
+                <p><strong>Answer:</strong> A Docker service is the definition of tasks to execute on manager or worker nodes. It's the central structure of swarm.</p>
+            </div>
+        </div>
+
+        <!-- Unit V -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-network-wired"></i> UNIT V: Docker Networks & CI</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🌐 Docker Networks</h3>
+            
+            <div class="important">
+                <strong>Docker Networks</strong> enable communication between containers and external systems.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Network Types:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded">
+                    <h5 class="font-bold">1. Bridge (default)</h5>
+                    <p class="text-sm">Private network for containers</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded">
+                    <h5 class="font-bold">2. Host</h5>
+                    <p class="text-sm">Uses host's network</p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded">
+                    <h5 class="font-bold">3. None</h5>
+                    <p class="text-sm">No network access</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded">
+                    <h5 class="font-bold">4. Overlay</h5>
+                    <p class="text-sm">Multi-host networking</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Network Commands:</h4>
+            <div class="command-box">docker network ls # List networks</div>
+            <div class="command-box">docker network create mynetwork # Create network</div>
+            <div class="command-box">docker network inspect mynetwork # Inspect network</div>
+            <div class="command-box">docker network rm mynetwork # Remove network</div>
+            <div class="command-box">docker run --network mynetwork nginx # Use network</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Creating Custom Network:</h4>
+            <div class="command-box">docker network create --driver bridge mybridge</div>
+            <div class="command-box">docker run -d --name web --network mybridge nginx</div>
+            <div class="command-box">docker run -d --name db --network mybridge mysql</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Service in Swarm Network:</h4>
+            <div class="command-box">docker network create --driver overlay myoverlay</div>
+            <div class="command-box">docker service create --network myoverlay --name web nginx</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">🔄 Continuous Integration</h3>
+            
+            <div class="important">
+                <strong>Continuous Integration (CI)</strong> is a development practice where code changes are automatically built, tested, and integrated frequently.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">CI Benefits:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Early bug detection</li>
+                <li>Reduced integration problems</li>
+                <li>Faster development cycle</li>
+                <li>Improved code quality</li>
+                <li>Automated testing</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">CI/CD Pipeline Stages:</h4>
+            <div class="bg-gray-100 p-4 rounded">
+                <div class="flex flex-wrap justify-center items-center space-x-4">
+                    <div class="bg-blue-500 text-white px-3 py-1 rounded">Source</div>
+                    <span>→</span>
+                    <div class="bg-green-500 text-white px-3 py-1 rounded">Build</div>
+                    <span>→</span>
+                    <div class="bg-yellow-500 text-white px-3 py-1 rounded">Test</div>
+                    <span>→</span>
+                    <div class="bg-purple-500 text-white px-3 py-1 rounded">Deploy</div>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Docker in CI/CD:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Consistent build environment</li>
+                <li>Easy testing isolation</li>
+                <li>Simplified deployment</li>
+                <li>Version control for images</li>
+            </ul>
+        </div>
+
+        <!-- Viva Questions Unit V -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit V</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What are Docker Networks?</p>
+                <p><strong>Answer:</strong> Docker networks enable communication between containers and external systems. They provide isolation and connectivity options.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: Types of Docker Networks?</p>
+                <p><strong>Answer:</strong> Bridge (default private network), Host (uses host network), None (no network), Overlay (multi-host networking).</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: What is Continuous Integration?</p>
+                <p><strong>Answer:</strong> CI is a development practice where code changes are automatically built, tested, and integrated frequently to detect issues early.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: Benefits of CI/CD?</p>
+                <p><strong>Answer:</strong> Early bug detection, reduced integration problems, faster development, improved code quality, and automated processes.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: How does Docker help in CI/CD?</p>
+                <p><strong>Answer:</strong> Docker provides consistent build environments, easy testing isolation, simplified deployment, and version control for applications.</p>
+            </div>
+        </div>
+
+        <!-- Unit VI -->
+        <div class="section-header">
+            <h2 class="text-3xl font-bold"><i class="fas fa-tools"></i> UNIT VI: Jenkins & CI/CD Pipelines</h2>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">🏗️ Jenkins</h3>
+            
+            <div class="important">
+                <strong>Jenkins</strong> is an open-source automation server for Continuous Integration and Continuous Deployment.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Jenkins Architecture:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Jenkins Master:</strong> Main server controlling pipelines</li>
+                <li><strong>Jenkins Agents/Slaves:</strong> Execute build tasks</li>
+                <li><strong>Jobs/Projects:</strong> Build configurations</li>
+                <li><strong>Plugins:</strong> Extended functionality</li>
+                <li><strong>Workspaces:</strong> Working directories</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Installing Jenkins:</h4>
+            
+            <h5 class="font-bold mt-4">On Ubuntu:</h5>
+            <div class="command-box">wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -</div>
+            <div class="command-box">sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'</div>
+            <div class="command-box">sudo apt update</div>
+            <div class="command-box">sudo apt install jenkins</div>
+            <div class="command-box">sudo systemctl start jenkins</div>
+
+            <h5 class="font-bold mt-4">Access Jenkins:</h5>
+            <div class="bg-yellow-100 p-3 rounded">
+                Open browser → http://localhost:8080 → Use initial admin password from /var/lib/jenkins/secrets/initialAdminPassword
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Jenkins Key Features:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Easy installation and configuration</li>
+                <li>Extensive plugin ecosystem</li>
+                <li>Distributed builds</li>
+                <li>Pipeline as code</li>
+                <li>Integration with version control</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-blue-600">🖥️ Node Management</h3>
+            
+            <h4 class="text-xl font-bold mb-3">Managing Jenkins Nodes:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Master Node:</strong> Main Jenkins server</li>
+                <li><strong>Agent Nodes:</strong> Remote machines for builds</li>
+                <li><strong>Labels:</strong> Tags for node selection</li>
+                <li><strong>Executors:</strong> Parallel build capacity</li>
+            </ul>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Adding Agent Nodes:</h4>
+            <ol class="list-decimal pl-6 space-y-2">
+                <li>Manage Jenkins → Manage Nodes and Clouds</li>
+                <li>New Node → Enter name and select type</li>
+                <li>Configure remote root directory</li>
+                <li>Set launch method (SSH, JNLP, etc.)</li>
+                <li>Add labels for job targeting</li>
+            </ol>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Node Configuration Options:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded">
+                    <h5 class="font-bold">SSH Launch</h5>
+                    <p class="text-sm">Connect via SSH with credentials</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded">
+                    <h5 class="font-bold">JNLP Launch</h5>
+                    <p class="text-sm">Java Web Start agent</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-purple-600">🔧 Jenkins Integration</h3>
+            
+            <h4 class="text-xl font-bold mb-3">DevOps Tool Integrations:</h4>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded">
+                    <h5 class="font-bold">Version Control:</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>Git</li>
+                        <li>SVN</li>
+                        <li>GitHub</li>
+                        <li>GitLab</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h5 class="font-bold">Build Tools:</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>Maven</li>
+                        <li>Gradle</li>
+                        <li>Ant</li>
+                        <li>MSBuild</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h5 class="font-bold">Testing Tools:</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>JUnit</li>
+                        <li>TestNG</li>
+                        <li>Selenium</li>
+                        <li>SonarQube</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded">
+                    <h5 class="font-bold">Deployment:</h5>
+                    <ul class="list-disc pl-4 text-sm">
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                        <li>AWS</li>
+                        <li>Azure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Docker Integration:</h4>
+            <div class="command-box">pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    docker.build("myapp:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.image("myapp:${env.BUILD_ID}").run('-p 8080:80')
+                }
+            }
+        }
+    }
+}</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">🚀 CI/CD Pipelines</h3>
+            
+            <div class="important">
+                <strong>CI/CD Pipeline</strong> is an automated sequence of stages that code goes through from development to production.
+            </div>
+
+            <h4 class="text-xl font-bold mt-4 mb-3">Pipeline Types:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded">
+                    <h5 class="font-bold">Declarative Pipeline</h5>
+                    <p class="text-sm">Structured, easier syntax</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded">
+                    <h5 class="font-bold">Scripted Pipeline</h5>
+                    <p class="text-sm">Groovy-based, more flexible</p>
+                </div>
+            </div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Sample Declarative Pipeline:</h4>
+            <div class="command-box">pipeline {
+    agent any
+    
+    environment {
+        DOCKER_REGISTRY = 'your-registry'
+        IMAGE_NAME = 'myapp'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/user/repo.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/test-results.xml'
+                }
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        
+        stage('Docker Build') {
+            steps {
+                script {
+                    def image = docker.build("${IMAGE_NAME}:${env.BUILD_ID}")
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                script {
+                    docker.image("${IMAGE_NAME}:${env.BUILD_ID}").run('-p 8080:8080')
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}</div>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Creating Pipeline:</h4>
+            <ol class="list-decimal pl-6 space-y-2">
+                <li>New Item → Pipeline</li>
+                <li>Configure pipeline definition</li>
+                <li>Choose Pipeline script or SCM</li>
+                <li>Save and build</li>
+            </ol>
+
+            <h4 class="text-xl font-bold mt-6 mb-3">Pipeline Best Practices:</h4>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Use version control for Jenkinsfiles</li>
+                <li>Keep pipelines simple and modular</li>
+                <li>Use parallel stages for efficiency</li>
+                <li>Implement proper error handling</li>
+                <li>Include comprehensive testing</li>
+            </ul>
+        </div>
+
+        <!-- Viva Questions Unit VI -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">❓ Viva Questions - Unit VI</h3>
+            
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q1: What is Jenkins?</p>
+                <p><strong>Answer:</strong> Jenkins is an open-source automation server that enables Continuous Integration and Continuous Deployment through build automation and pipeline management.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q2: Explain Jenkins Architecture.</p>
+                <p><strong>Answer:</strong> Jenkins has Master-Agent architecture. Master controls pipelines and scheduling, while Agents execute build tasks. Jobs define build configurations.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q3: What are Jenkins Nodes?</p>
+                <p><strong>Answer:</strong> Jenkins nodes are machines (master or agents) that execute builds. Master node controls, agent nodes perform actual work.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q4: What is Jenkins Pipeline?</p>
+                <p><strong>Answer:</strong> Jenkins Pipeline is a suite of plugins supporting implementing and integrating continuous delivery pipelines as code.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q5: Difference between Declarative and Scripted Pipeline?</p>
+                <p><strong>Answer:</strong> Declarative uses structured syntax with predefined sections. Scripted uses Groovy language with more flexibility but complex syntax.</p>
+            </div>
+
+            <div class="qa-box">
+                <p class="font-bold text-blue-600">Q6: How does Jenkins integrate with Docker?</p>
+                <p><strong>Answer:</strong> Jenkins can build Docker images, run containers, deploy to registries, and use Docker agents for builds through Docker plugins.</p>
+            </div>
+        </div>
+
+        <!-- Important Commands Summary -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4 text-green-600">📋 Complete Command Reference</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-bold mb-2 text-blue-600">Basic Docker Commands:</h4>
+                    <div class="command-box text-sm">docker --version</div>
+                    <div class="command-box text-sm">docker info</div>
+                    <div class="command-box text-sm">docker images</div>
+                    <div class="command-box text-sm">docker ps</div>
+                    <div class="command-box text-sm">docker ps -a</div>
+                    <div class="command-box text-sm">docker pull image_name</div>
+                    <div class="command-box text-sm">docker run image_name</div>
+                    <div class="command-box text-sm">docker stop container_id</div>
+                    <div class="command-box text-sm">docker rm container_id</div>
+                    <div class="command-box text-sm">docker rmi image_name</div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-2 text-blue-600">Docker Compose Commands:</h4>
+                    <div class="command-box text-sm">docker-compose --version</div>
+                    <div class="command-box text-sm">docker-compose up</div>
+                    <div class="command-box text-sm">docker-compose up -d</div>
+                    <div class="command-box text-sm">docker-compose down</div>
+                    <div class="command-box text-sm">docker-compose ps</div>
+                    <div class="command-box text-sm">docker-compose logs</div>
+                    <div class="command-box text-sm">docker-compose build</div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-2 text-blue-600">Docker Swarm Commands:</h4>
+                    <div class="command-box text-sm">docker swarm init</div>
+                    <div class="command-box text-sm">docker swarm join-token worker</div>
+                    <div class="command-box text-sm">docker node ls</div>
+                    <div class="command-box text-sm">docker service create --name web nginx</div>
+                    <div class="command-box text-sm">docker service ls</div>
+                    <div class="command-box text-sm">docker service ps service_name</div>
+                    <div class="command-box text-sm">docker service scale service_name=5</div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-2 text-blue-600">Docker Network Commands:</h4>
+                    <div class="command-box text-sm">docker network ls</div>
+                    <div class="command-box text-sm">docker network create mynetwork</div>
+                    <div class="command-box text-sm">docker network inspect mynetwork</div>
+                    <div class="command-box text-sm">docker network rm mynetwork</div>
+                    <div class="command-box text-sm">docker run --network mynetwork nginx</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Points to Remember -->
+        <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg p-6 mb-6">
+            <h3 class="text-2xl font-bold mb-4">🎯 Key Points to Remember for Viva</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h4 class="font-bold mb-2">Docker Basics:</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li>Container vs Image difference</li>
+                        <li>Docker architecture components</li>
+                        <li>Dockerfile instructions (FROM, RUN, COPY, CMD)</li>
+                        <li>Port mapping concept</li>
+                        <li>Volume mounting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-2">Advanced Topics:</h4>
+                    <ul class="list-disc pl-4 space-y-1 text-sm">
+                        <li>Microservices architecture</li>
+                        <li>Docker Compose YAML structure</li>
+                        <li>Swarm manager vs worker nodes</li>
+                        <li>Network types (bridge, host, overlay)</li>
+                        <li>CI/CD pipeline stages</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Tips -->
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-6 rounded">
+            <h3 class="text-xl font-bold mb-3 text-yellow-800">💡 Final Exam Tips</h3>
+            <ul class="list-disc pl-6 space-y-2 text-yellow-800">
+                <li><strong>Practice Commands:</strong> Make sure you can explain what each command does</li>
+                <li><strong>Understand Concepts:</strong> Don't just memorize, understand the 'why' behind each concept</li>
+                <li><strong>Real-world Examples:</strong> Be ready to give practical use cases</li>
+                <li><strong>Architecture:</strong> Draw diagrams if asked about Docker/Jenkins architecture</li>
+                <li><strong>Troubleshooting:</strong> Know common issues and their solutions</li>
+                <li><strong>Integration:</strong> Understand how Docker fits in CI/CD pipeline</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 p-4 bg-gray-800 text-white rounded-lg">
+            <p class="text-lg font-bold">🎓 Best of Luck for Your Viva! 🎓</p>
+            <p class="text-sm mt-2">Remember: Stay calm, think before answering, and ask for clarification if needed!</p>
+        </div>
+    </div>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDgFYqaUGDGGK0ktmqZBho08Tm84jSD%2BDApiRVIIHn3j3ffKnHi8fuzMv1FDrFs0XT3IWmT9gdk8NEhLkdFGlfwU2Y3reP9tovZXNiQM0K1CtiOVM%2BTR5jus9hchx%2Bc8thEBBHmes2vfKMqnSwF4SlkdSEKjZ28%2FWwDrl4o2enS8pAEkjl%2F%2B245UmorFrr8Ria7tAq%2FvwbGX2mIRoTz%2FS7gozZwqVqYr0tYCnboz5At92wJGVctbUcXAiWV1dHdbDBGgcRyzeOS2XAPId15OPpWGkz2Pohy3ZVEK%2BS2hj5141%2FHQh98EGxmukMTIrW%2BmtTg2NNUo6J1RrUHWHyQNjO9GBUPCJIGn%2B3yqCDYmr8dKSZpb4tzHXgHmq%2BLQPU96UG9P374Y%2BAHL0qr0CC0NJIwHOPwhzC%2BcWZhuOi%2FTjq3W70BufvB6JmAKekgwt12%2BFAe%2BCrGZwLDgGavehwlvtL8KjY4WrRASBoDvWO01lV6z80xkYOEbZBXBYUySP0zrLIYWzB9Iy6YbmH7%2F16QqeGSE%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDgFYqaUGDGGK0ktmqZBho08Tm84jSD+DApiRVIIHn3j3ffKnHi8fuzMv1FDrFs0XT3IWmT9gdk8NEhLkdFGlfwU2Y3reP9tovZXNiQM0K1CtiOVM+TR5jus9hchx+c8thEBBHmes2vfKMqnSwF4SlkdSEKjZ28/WwDrl4o2enS8pAEkjl/+245UmorFrr8Ria7tAq/vwbGX2mIRoTz/S7gozZwqVqYr0tYCnboz5At92wJGVctbUcXAiWV1dHdbDBGgcRyzeOS2XAPId15OPpWGkz2Pohy3ZVEK+S2hj5141/HQh98EGxmukMTIrW+mtTg2NNUo6J1RrUHWHyQNjO9GBUPCJIGn+3yqCDYmr8dKSZpb4tzHXgHmq+LQPU96UG9P374Y+AHL0qr0CC0NJIwHOPwhzC+cWZhuOi/Tjq3W70BufvB6JmAKekgwt12+FAe+CrGZwLDgGavehwlvtL8KjY4WrRASBoDvWO01lV6z80xkYOEbZBXBYUySP0zrLIYWzB9Iy6YbmH7/16QqeGSE=";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
